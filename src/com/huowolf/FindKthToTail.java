@@ -9,15 +9,6 @@ import org.junit.Test;
  * @description 输入一个链表，输出该链表中倒数第k个结点。
  */
 
-class ListNode {
-    int val;
-    ListNode next = null;
-
-    ListNode(int val) {
-        this.val = val;
-    }
-}
-
 public class FindKthToTail {
 
     public static ListNode FindKthToTail(ListNode head,int k) {
