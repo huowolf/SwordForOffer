@@ -57,10 +57,18 @@ public class ReverseList {
     }
 
 
-    //头插法翻转链表
+    //头插法翻转链表(去除引入的那个头结点，才能通过牛客网评测机)
     public static ListNode ReverseList2(ListNode head){
 
-        ListNode pNext = null;
+        if(head == null){
+            return null;
+        }
+
+        ListNode pNext;
+
+        //搞个头结点
+        ListNode ReverseHead = new ListNode(-1);
+
         ListNode pNode = head;
 
         while (pNode!=null){
@@ -69,31 +77,24 @@ public class ReverseList {
             pNext = pNode.next;
 
             //头插（让工作节点的next指针指向头结点）
-            pNode.next =head;
-            head = pNode;
+            pNode.next = ReverseHead;
+            ReverseHead = pNode;
 
             //go on
             pNode = pNext;
         }
-        return head;
+
+        //移除那个翻转后的头结点
+        ListNode node = ReverseHead;
+        while (node.next.next!=null){
+            node = node.next;
+        }
+        node.next = null;
+
+        return ReverseHead;
     }
 
 
-    @Test
-    public void testReverseList2(){
-
-        ListNode listNode = ReverseList2(head);
-        Assert.assertEquals(6,listNode.val);
-
-        head = null;
-        ListNode node = ReverseList2(head);
-        Assert.assertEquals(null,node);
-
-        ListNode headNew = new ListNode(1);
-        ListNode reverseList = ReverseList2(headNew);
-        Assert.assertEquals(1,reverseList.val);
-
-    }
 
     @Test
     public void testReverseList(){
@@ -106,10 +107,31 @@ public class ReverseList {
         ListNode node = ReverseList(head);
         Assert.assertEquals(null,node);
 
-
         //检查输入的链表只有一个节点的情况
         ListNode headNew = new ListNode(1);
         ListNode reverseList = ReverseList(headNew);
+        Assert.assertEquals(1,reverseList.val);
+
+    }
+
+
+    @Test
+    public void testReverseList2(){
+
+        ListNode listNode = ReverseList2(head);
+        Assert.assertEquals(6,listNode.val);
+
+        while (listNode!=null){
+            System.out.println(listNode.val);
+            listNode = listNode.next;
+        }
+
+        head = null;
+        ListNode node = ReverseList2(head);
+        Assert.assertEquals(null,node);
+
+        ListNode headNew = new ListNode(1);
+        ListNode reverseList = ReverseList2(headNew);
         Assert.assertEquals(1,reverseList.val);
 
     }
