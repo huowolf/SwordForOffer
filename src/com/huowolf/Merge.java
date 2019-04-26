@@ -37,6 +37,12 @@ public class Merge {
     }
 
 
+    /**
+     * 迭代法合并
+     * @param list1
+     * @param list2
+     * @return
+     */
     public static ListNode Merge2(ListNode list1,ListNode list2) {
         if(list1 == null) {
             return list2;
