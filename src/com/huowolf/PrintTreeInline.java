@@ -60,10 +60,12 @@ public class PrintTreeInline {
         TreeNode pNode5 = new TreeNode(7);
         TreeNode pNode6 = new TreeNode(9);
         TreeNode pNode7 = new TreeNode(11);
+        TreeNode pNode8 = new TreeNode(12);
 
         TreeUtil.connectNode(pNode1,pNode2,pNode3);
         TreeUtil.connectNode(pNode2,pNode4,pNode5);
         TreeUtil.connectNode(pNode3,pNode6,pNode7);
+        TreeUtil.connectNode(pNode6,pNode8,null);
 
         PrintTreeInline(pNode1);
     }
